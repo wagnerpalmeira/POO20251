@@ -1,0 +1,7 @@
+package com.example.roomreservationapp.repository;
+
+import com.example.roomreservationapp.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+}
