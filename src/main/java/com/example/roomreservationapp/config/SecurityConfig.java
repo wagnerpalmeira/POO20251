@@ -29,8 +29,8 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/entrar?logoutSuccess=true")  // Redireciona após logout
-                        .deleteCookies("JSESSIONID")  // Deleta o cookie de sessão
+                        .logoutSuccessUrl("/entrar?logoutSuccess=true")
+                        .deleteCookies("JSESSIONID")
                 )
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/entrar?loginRequired=true"))  // Redireciona para login se não autenticado
@@ -40,6 +40,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  // Usando bcrypt para criptografar senhas
+        return new BCryptPasswordEncoder();
     }
 }
