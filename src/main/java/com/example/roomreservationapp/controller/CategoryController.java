@@ -4,10 +4,7 @@ import com.example.roomreservationapp.model.Category;
 import com.example.roomreservationapp.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/categorias")
@@ -37,4 +34,31 @@ public class CategoryController {
         categoryService.salvarCategoria(categoria);
         return "redirect:/categorias";
     }
+
+    @GetMapping("/editar/{id}")
+    public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
+        Category categoria = categoryService.buscarPorId(id);
+        if (categoria == null) {
+            return "redirect:/categorias";
+        }
+        model.addAttribute("categoria", categoria);
+        return "categorias/editar";
+    }
+
+    @PostMapping("/editar")
+    public String editarCategoria(@RequestParam Long id, @RequestParam String name) {
+        Category categoria = categoryService.buscarPorId(id);
+        if (categoria != null) {
+            categoria.setName(name);
+            categoryService.salvarCategoria(categoria);
+        }
+        return "redirect:/categorias";
+    }
+
+    @GetMapping("/excluir")
+    public String excluirCategoria(@RequestParam Long id) {
+        categoryService.excluirCategoria(id);
+        return "redirect:/categorias";
+    }
+
 }

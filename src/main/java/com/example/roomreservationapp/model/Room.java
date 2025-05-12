@@ -27,6 +27,10 @@ public class Room {
         this.categories = categories;
     }
 
+    public Room() {
+
+    }
+
     public Long getId() {
         return id;
     }

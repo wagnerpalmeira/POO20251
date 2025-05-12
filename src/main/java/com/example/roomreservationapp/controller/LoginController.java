@@ -64,6 +64,7 @@ public class LoginController {
     @PostMapping("/registrar")
     public String registrar(@RequestParam String email,
                             @RequestParam String senha) {
+//        DTO
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         usuario.setSenha(senha);

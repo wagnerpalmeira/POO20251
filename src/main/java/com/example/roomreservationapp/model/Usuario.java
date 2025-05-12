@@ -44,7 +44,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Nenhum papel específico, pode personalizar aqui
         return Collections.emptyList();
     }
 
